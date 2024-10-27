@@ -10,10 +10,10 @@ drawCat :: Diagram B
 drawCat = mconcat
   [
   -- hat
-  drawWitchHat # scale 0.5 # translate (r2 (0, 0.3)),
+  drawWitchHat # scale 0.15 # translate (r2 (0, 0.6)),
 
     -- Eyes
-  circle 0.13 # fc red
+  circle 0.13 # fc pink
               # translate (r2 (-0.4, 0.25)),
   circle 0.13 # fc red
               # translate (r2 (-0.4, 0.25)),
@@ -21,7 +21,7 @@ drawCat = mconcat
               # translate (r2 (0.4, 0.25)),
 
   -- Nose
-  triangle 0.26 # fc pink
+  triangle 0.26 # fc purple
                 # rotateBy (1/2)
                 # translate (r2 (0, 0)),
 
@@ -46,10 +46,10 @@ drawCat = mconcat
             # translate (r2 (1, -0.2)),
 
   -- Head
-  circle 1  # fc lightgray
+  circle 1  # fc orange
             # lw veryThick
             # lc pink
-            # dashingG [0.2, 0.05] 0,
+            # dashingG [0.5, 0.05] 0,
 
   -- Ears
   triangle 0.5  # scaleX 0.6
@@ -68,8 +68,8 @@ drawCat = mconcat
 -}
 
 
-  , fairyWing # rotateBy (-1/8) # reflectY # translateX 0.8  # translateY 0.1 --right wing
-  , fairyWing # rotateBy (-1/8) # reflectY # reflectX # translateX (-0.8)  # translateY 0.1 --right wing
+  , wing # rotateBy (-1/8) # reflectY # translateX 1.2  # translateY 0.1 --right wing
+  , wing # rotateBy (-1/8) # reflectY # reflectX # translateX (-1.2)  # translateY 0.1 --right wing
 
   ]
 
