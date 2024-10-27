@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cat Design Studio</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('./images/background.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+
+    #svgContainer {
+      width: 60%;
+      height: auto;
+      background-color: rgba(255, 255, 255, 0.8); /* Slight white background for contrast */
+      border: 1px solid #ccc;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    .controls {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+      width: 60%;
+    }
+
+    .button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .button:disabled {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 style="color: Purple; background-color: White;">Find Your Purrrfect Cat!</h1>
+
+  <!-- Container to display SVG -->
+  <div id="svgContainer">
+    <!-- SVG content will be loaded here -->
+  </div>
+
+  <!-- Navigation controls -->
+  <div class="controls">
+    <button id="prevButton" class="button" onclick="showPrevSVG()">← Previous</button>
+    <button id="nextButton" class="button" onclick="showNextSVG()">Next →</button>
+  </div>
+
+  <script>
+    // Array of SVG file paths
+    const svgFiles = [
+      'images/image1.svg',
+      'images/image2.svg',
+      'images/image3.svg'
+      // Add more SVG file paths as needed
+    ];
+
+    let currentIndex = 0; // Keep track of the current SVG
+
+    // Function to load SVG into the container
+    function loadSVG() {
+      const svgContainer = document.getElementById('svgContainer');
+      svgContainer.innerHTML = `<object data="${svgFiles[currentIndex]}" type="image/svg+xml" width="100%" height="100%"></object>`;
+      updateButtons();
+    }
+
+    // Show previous SVG
+    function showPrevSVG() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        loadSVG();
+      }
+    }
+
+    // Show next SVG
+    function showNextSVG() {
+      if (currentIndex < svgFiles.length - 1) {
+        currentIndex++;
+        loadSVG();
+      }
+    }
+
+    // Update button states
+    function updateButtons() {
+      document.getElementById('prevButton').disabled = currentIndex === 0;
+      document.getElementById('nextButton').disabled = currentIndex === svgFiles.length - 1;
+    }
+
+    // Load the first SVG initially
+    window.onload = loadSVG;
+  </script>
+
+</body>
+</html>
