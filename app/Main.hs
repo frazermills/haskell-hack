@@ -13,11 +13,11 @@ drawCat = mconcat
   drawWitchHat # scale 0.5 # translate (r2 (0, 0.3)),
 
     -- Eyes
-  circle 0.13 # fc black
+  circle 0.13 # fc red
               # translate (r2 (-0.4, 0.25)),
-  circle 0.13 # fc black
+  circle 0.13 # fc red
               # translate (r2 (-0.4, 0.25)),
-  circle 0.13 # fc black
+  circle 0.13 # fc blue
               # translate (r2 (0.4, 0.25)),
 
   -- Nose
@@ -61,13 +61,16 @@ drawCat = mconcat
                 # translate (r2 (0.6, 0.82))
                 # rotateBy (-1/20)
 
+  {-
   , batWithBaseballBat  # rotateBy (1/8)
                         # translate (r2 (3.2, 3))
                         # scale 1
+-}
 
 
   , fairyWing # rotateBy (-1/8) # reflectY # translateX 0.8  # translateY 0.1 --right wing
   , fairyWing # rotateBy (-1/8) # reflectY # reflectX # translateX (-0.8)  # translateY 0.1 --right wing
+
   ]
 
 drawWitchHat :: Diagram B
@@ -80,10 +83,10 @@ drawWitchHat =
 
         -- Cone of the hat
         conePoints = [p2 (0, 0), p2 (-2, -4), p2 (2, -4)]
-        cone = fromVertices conePoints # closeLine # strokeLoop # fc purple # lw 0.5 # translate (r2 (0, 6))
+        cone = fromVertices conePoints # closeLine # strokeLoop # fc yellow # lw 0.5 # translate (r2 (0, 6))
 
         -- Hat band and buckle
-        band = rect 3.3 0.3 # fc black # lw none # moveTo (p2 (0, -1)) # translate (r2 (0, 4))
+        band = rect 3.3 0.3 # fc green # lw none # moveTo (p2 (0, -1)) # translate (r2 (0, 4))
         buckleInner = roundedRect 0.4 0.2 0.1 # fc black # lw none # translate (r2 (0, 4))
         buckleOuter = roundedRect 0.6 0.4 0.1 # fc orange # lw none # translate (r2 (0, 4))
         buckle = (buckleInner <> buckleOuter) # moveTo (p2 (0, -1))
